@@ -1,0 +1,195 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sabor Casero</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonios">Testimonios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section mt-5 pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <h1 class="display-4">Bienvenido a Sabor Casero</h1>
+                    <p class="lead">Donde cada plato cuenta una historia de tradición y sabor auténtico</p>
+                    <a href="#reservaciones" class="btn btn-primary btn-lg mt-3">Reserva tu Mesa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Nuestra Historia</h2>
+                    <p>Desde 1985, Sabor Casero ha sido el lugar favorito de las familias para disfrutar de comidas preparadas con recetas tradicionales transmitidas por generaciones. Nuestro fundador, el abuelo Miguel, comenzó este sueño con la simple idea de compartir los sabores de su cocina con la comunidad.</p>
+                    <p>Hoy mantenemos viva esa tradición, utilizando ingredientes frescos y locales en cada uno de nuestros platillos, siempre con el toque casero que nos caracteriza.</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Horario de Atención</h2>
+                    <ul class="list-unstyled">
+                        <li><strong>Lunes a Jueves:</strong> 11:00 am - 9:00 pm</li>
+                        <li><strong>Viernes y Sábado:</strong> 11:00 am - 10:30 pm</li>
+                        <li><strong>Domingo:</strong> 12:00 pm - 8:00 pm</li>
+                    </ul>
+                    <p class="mt-3">Visítanos en Calle Principal #123, Ciudad Sabrosa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestro Menú Destacado</h2>
+            
+            <div class="row menu-category">
+                <div class="col-md-12">
+                    <h3>Platos Principales</h3>
+                </div>
+                <div class="col-md-4">
+                    <h5>Pollo a la Brasa</h5>
+                    <p>Nuestro pollo marinado por 24 horas en hierbas secretas y asado lentamente. Acompañado de papas rústicas y ensalada fresca.</p>
+                    <p class="text-primary">$14.99</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Lasaña de la Abuela</h5>
+                    <p>Capas de pasta casera, carne de res sazonada, queso mozzarella y nuestra salsa de tomate especial horneada a la perfección.</p>
+                    <p class="text-primary">$12.99</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Salmón con Hierbas</h5>
+                    <p>Filete de salmón fresco con una mezcla de hierbas finas, acompañado de vegetales de temporada al vapor y puré de papas.</p>
+                    <p class="text-primary">$16.99</p>
+                </div>
+            </div>
+            
+            <div class="row menu-category">
+                <div class="col-md-12">
+                    <h3>Postres</h3>
+                </div>
+                <div class="col-md-4">
+                    <h5>Pastel de Chocolate</h5>
+                    <p>Nuestro pastel de chocolate intenso con centro fundido, acompañado de helado de vainilla casero.</p>
+                    <p class="text-primary">$6.99</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Flan Casero</h5>
+                    <p>El auténtico flan preparado diariamente con la receta tradicional de la abuela María.</p>
+                    <p class="text-primary">$5.99</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Cheesecake de Frutos Rojos</h5>
+                    <p>Suave cheesecake con base de galleta, coronado con una compota de frutos rojos naturales.</p>
+                    <p class="text-primary">$7.99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonios" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Lo que Dicen Nuestros Clientes</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"El mejor restaurante familiar de la ciudad. Su pollo a la brasa es insuperable y el servicio siempre es excelente."</p>
+                        <p class="text-end"><strong>- Laura M.</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"He celebrado todos mis cumpleaños aquí durante los últimos 5 años. La consistencia en la calidad de su comida es remarkable."</p>
+                        <p class="text-end"><strong>- Carlos R.</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"Como food blogger, he visitado muchos restaurantes, pero Sabor Casero tiene ese algo especial que te hace sentir en casa."</p>
+                        <p class="text-end"><strong>- Ana G.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Reserva tu Mesa</h2>
+                    <p>¿Planeas una cena especial o una celebración? Reserva con anticipación para garantizar tu lugar en nuestro restaurante.</p>
+                    <p><strong>Teléfono:</strong> (123) 456-7890</p>
+                    <p><strong>Email:</strong> reservaciones@saborcasero.com</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Newsletter</h2>
+                    <p>Suscríbete para recibir nuestras promociones especiales y eventos temáticos.</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Tu correo electrónico">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Suscribirme</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Sabor Casero</h5>
+                    <p>Comida con amor, servida con pasión.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="text-white">Inicio</a></li>
+                        <li><a href="#menu" class="text-white">Menú</a></li>
+                        <li><a href="#nosotros" class="text-white">Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Síguenos</h5>
+                    <p>Facebook | Instagram | Twitter</p>
+                    <p>© 2023 Sabor Casero. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
