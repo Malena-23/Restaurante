@@ -1,0 +1,28 @@
+from django.shortcuts import render
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Categoria
+from .forms import CategoriaForm
+
+class CategoriaListView(LoginRequiredMixin, ListView):
+    model = Categoria
+    template_name = 'categorias/categoria_list.html'
+    context_object_name = 'categorias'
+    
+class CategoriaCreateView(LoginRequiredMixin, CreateView):
+    model = Categoria
+    form_class = CategoriaForm
+    template_name = 'categorias/categoria_form.html'
+    success_url = '/platillos/categorias/'
+
+class CategoriaUpdateView(LoginRequiredMixin, UpdateView):
+    model = Categoria
+    form_class = CategoriaForm
+    template_name = 'categorias/categoria_edit_form.html'
+    success_url = '/platillos/categorias/'
+
+class CategoriaDeleteView(LoginRequiredMixin, DeleteView):
+    model = Categoria
+    template_name = 'categorias/categoria_confirm_delete.html'
+    success_url = '/platillos/categorias/'

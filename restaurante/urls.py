@@ -6,5 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main_index, name='main_index'),
     path('accounts/', include('apps.accounts.urls')),
+    path ('platillos/', include('apps.platillos.urls')),
     path('dashboard/', views.index_user, name='index_user'),
 ]
