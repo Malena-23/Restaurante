@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Categoria, Platillo
-from .forms import CategoriaForm
+from .forms import CategoriaForm, PlatilloForm
 
 class CategoriaListView(LoginRequiredMixin, ListView):
     model = Categoria
@@ -31,3 +31,9 @@ class PlatilloListView(LoginRequiredMixin, ListView):
     model = Platillo
     template_name = 'platillos/platillos_list.html'
     context_object_name = 'platillos'
+    
+class PlatilloCreateView(LoginRequiredMixin, CreateView):
+    model = Platillo
+    form_class = PlatilloForm
+    template_name = 'platillos/platillos_form.html'
+    success_url = '/platillos/platillos/'

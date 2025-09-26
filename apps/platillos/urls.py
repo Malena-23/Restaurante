@@ -9,4 +9,5 @@ urlpatterns = [
     path('categorias/<int:pk>/edit/', views.CategoriaUpdateView.as_view(), name='categoria_edit'),
     path('categorias/<int:pk>/delete/', views.CategoriaDeleteView.as_view(), name='categoria_delete'),
     path('platillos/', views.PlatilloListView.as_view(), name='platillos_list'),
+    path('platillos/add/', views.PlatilloCreateView.as_view(), name='platillos_create'),
 ]
