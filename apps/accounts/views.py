@@ -4,7 +4,6 @@ from .forms import LoginForm
 
 def login_view(request):
     form = LoginForm()
-
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():

@@ -7,8 +7,7 @@ class LoginForm(forms.Form):
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField( 
                 label='Contraseña',
-                widget=forms.PasswordInput(attrs={'class': 'form-control'}
-), 
+                widget=forms.PasswordInput(attrs={'class': 'form-control'}),
                 required=True)
     remember_me = forms.BooleanField(
                 label = 'Recordar mis datos', 
