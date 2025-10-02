@@ -9,4 +9,5 @@ urlpatterns = [
     path ('platillos/', include('apps.platillos.urls')),
     path('ordenes/', include('apps.ordenes.urls')),
     path('dashboard/', views.index_user, name='index_user'),
+    path('mesas/', include('apps.mesas.urls')),
 ]

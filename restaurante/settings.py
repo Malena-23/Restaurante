@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.platillos',
     'apps.ordenes',
+    'apps.mesas',
 ]
 
 MIDDLEWARE = [

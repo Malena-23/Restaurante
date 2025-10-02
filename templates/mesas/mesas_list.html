@@ -1,0 +1,27 @@
+{% extends 'main/base_user.html' %}
+
+{% block content %}
+<h1>Lista de Mesas</h1>
+<a class="btn btn-primary" href="{% url 'mesas:mesas_create' %}">Agregar mesa</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mesa in mesas %}
+        <tr>
+            <td>
+                <a class="btn btn-primary" href="{% url 'mesas:mesas_edit' mesa.pk %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'mesas:mesas_delete' mesa.pk %}">Eliminar</a>
+            </td>
+            <td>{{ mesa.nombre }}</td>
+            <td>{{ mesa.estado.nombre }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
