@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Lista de Estados de Mesas</h1>
-<a class="btn btn-primary" href="{% url 'mesas:mesas_estado_create' %}">Agregar estado de mesa</a>
+<a class="btn btn-primary" href="{% url 'mesas:mesas_estado_create' %}">Agregar Estado de Mesas</a>
 <table class="table">
     <thead>
         <tr>
@@ -14,8 +14,8 @@
         {% for mesa_estado in mesas_estados %}
         <tr>
             <td>
-                <a class="btn btn-primary" href="{% url 'mesas:mesas_estado_edit' mesas.pk %}">Editar</a>
-                <a class="btn btn-danger" href="{% url 'mesas:mesas_estado_delete' mesas.pk %}">Eliminar</a>
+                <a class="btn btn-primary" href="{% url 'mesas:mesas_estado_edit' mesa_estado.pk %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'mesas:mesas_estado_delete' mesa_estado.pk %}">Eliminar</a>
             </td>
             <td>{{mesa_estado.nombre}}</td>
         </tr>

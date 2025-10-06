@@ -2,14 +2,14 @@
 
 {% block content %}
 <h1>Lista de Mesas</h1>
-<a class="btn btn-primary" href="{% url 'mesas:mesas_estado_create' %}">Estados</a>
-<a class="btn btn-primary" href="{% url 'mesas:mesas_create' %}">Agregar mesa</a>
+<a class="btn btn-primary" href="{% url 'mesas:mesas_create' %}">Agregar Mesa</a>
+<a class="btn btn-primary" href="{% url 'mesas:mesas_estado_list' %}">Crear Estados</a>
 <table class="table">
     <thead>
         <tr>
             <th></th>
             <th>Nombre</th>
-            <th>Capacidad</th>
+            <th>Capacicad</th>
             <th>Estado</th>
         </tr>
     </thead>

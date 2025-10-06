@@ -1,7 +1,7 @@
 {% extends 'main/base_user.html' %}
 
 {% block content %}
-<h1>Agregar estado de mesa</h1>
+<h1>Agregar Estados de Mesas</h1>
 
 <form action="{% url 'mesas:mesas_estado_create' %}" method="post">
     {% csrf_token %}

@@ -1,7 +1,7 @@
 {% extends 'main/base_user.html' %}
 
 {% block content %}
-<h1>Agregar categoría</h1>
+<h1>Agregar Categoría</h1>
 
 <form action="{% url 'platillos:categoria_create' %}" method="post">
     {% csrf_token %}

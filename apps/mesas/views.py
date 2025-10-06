@@ -8,7 +8,7 @@ from .forms import MesasEstadoForm, MesaForm
 class MesasEstadoListView(LoginRequiredMixin, ListView):
     model = MesasEstado
     template_name = 'mesas_estado/mesas_estado_list.html'
-    context_object_name = 'mesas_estado'
+    context_object_name = 'mesas_estados'
     
 class MesasEstadoCreateView(LoginRequiredMixin, CreateView):
     model = MesasEstado

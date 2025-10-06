@@ -9,7 +9,7 @@ class MesasEstado(models.Model):
         
 class Mesa(models.Model):
         nombre = models.CharField(max_length=200)
-        capacidad = models.IntegerField(default=4)
+        capacidad = models.IntegerField(default=1)
         estado = models.ForeignKey(MesasEstado, on_delete=models.CASCADE, related_name='mesas')
 
         def __str__(self):
