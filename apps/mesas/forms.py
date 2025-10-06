@@ -1,30 +1,20 @@
 import django.forms as forms
-from .models import Categoria, Platillo, Mesa
+from .models import MesasEstado, Mesa
 
-class CategoriaForm(forms.ModelForm):
+class MesasEstadoForm(forms.ModelForm):
     class Meta:
-        model = Categoria
+        model = MesasEstado
         fields = ['nombre']
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el nombre de la categoría'})
-        }
-        
-class PlatilloForm(forms.ModelForm):
-    class Meta:
-        model = Platillo
-        fields = ['nombre', 'descripcion', 'precio', 'categoria']
-        widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el nombre del platillo'}),
-            'descripcion': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese la descripción del platillo'}),
-            'precio': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el precio del platillo'}),
-            'categoria': forms.Select(attrs={'class': 'form-control'})
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el nombre del estado de la mesa'})
         }
         
 class MesaForm(forms.ModelForm):
     class Meta:
         model = Mesa
-        fields = ['nombre', 'estado']
+        fields = ['nombre', 'capacidad', 'estado']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el nombre de la mesa'}),
+            'capacidad': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese la capacidad de la mesa'}),
             'estado': forms.Select(attrs={'class': 'form-control'})
         }

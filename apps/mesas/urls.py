@@ -3,17 +3,12 @@ from . import views
 
 app_name = 'mesas'
 
-urlpatterns = [    
-    path('categorias/', views.CategoriaListView.as_view(), name='categoria_list'),
-    path('categorias/add/', views.CategoriaCreateView.as_view(), name='categoria_create'),
-    path('categorias/<int:pk>/edit/', views.CategoriaUpdateView.as_view(), name='categoria_edit'),
-    path('categorias/<int:pk>/delete/', views.CategoriaDeleteView.as_view(), name='categoria_delete'),
-    
-    path('platillos/', views.PlatilloListView.as_view(), name='platillos_list'),
-    path('platillos/add/', views.PlatilloCreateView.as_view(), name='platillos_create'),
-    path('platillos/<int:pk>/edit/', views.PlatilloUpdateView.as_view(), name='platillos_edit'),
-    path('platillos/<int:pk>/delete/', views.PlatilloDeleteView.as_view(), name='platillos_delete'),
-    
+urlpatterns = [  
+    path('mesas_estado/', views.MesasEstadoListView.as_view(), name='mesas_estado_list'),
+    path('mesas_estado/add/', views.MesasEstadoCreateView.as_view(), name='mesas_estado_create'),
+    path('mesas_estado/<int:pk>/edit/', views.MesasEstadoUpdateView.as_view(), name='mesas_estado_edit'),
+    path('mesas_estado/<int:pk>/delete/', views.MesasEstadoDeleteView.as_view(), name='mesas_estado_delete'),
+      
     path('mesas/', views.MesaListView.as_view(), name='mesas_list'),
     path('mesas/add/', views.MesaCreateView.as_view(), name='mesas_create'),
     path('mesas/<int:pk>/edit/', views.MesaUpdateView.as_view(), name='mesas_edit'),
