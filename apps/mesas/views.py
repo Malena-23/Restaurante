@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import MesasEstado, Mesa, Orden, OrdenDetalle
 from .forms import MesasEstadoForm, MesaForm, OrdenForm, OrdenDetalleForm
+from django.views import View
 
 class MesasEstadoListView(LoginRequiredMixin, ListView):
     model = MesasEstado
@@ -94,3 +95,46 @@ class OrdenDetalleView(LoginRequiredMixin, ListView):
             return self.get(request, *args, **kwargs)
         else:
             return render(request, self.template_name, {'form': form, 'orden_detalles': self.get_queryset(), 'orden': Orden.objects.get(id=self.kwargs.get('orden_id'))})
+
+class OrdenDetalleUpdateView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        detalle = OrdenDetalle.objects.get(id=pk)
+        form = OrdenDetalleForm(initial={
+            'platillo': detalle.platillo,
+            'cantidad': detalle.cantidad,
+            'notas': detalle.notas,
+            'orden_id': detalle.orden.id
+        })
+        return render(request, 'ordenes/orden_detalle_edit_form.html', {'form': form, 'detalle': detalle})
+
+    def post(self, request, pk):
+        detalle = OrdenDetalle.objects.get(id=pk)
+        form = OrdenDetalleForm(request.POST)
+        if form.is_valid():
+            detalle.platillo = form.cleaned_data['platillo']
+            detalle.cantidad = form.cleaned_data['cantidad']
+            detalle.notas = form.cleaned_data['notas']
+            detalle.precio_unitario = form.cleaned_data['platillo'].precio
+            detalle.save()
+            return render(request, 'ordenes/orden_detalle_list.html', {
+                'orden_detalles': OrdenDetalle.objects.filter(orden=detalle.orden),
+                'orden': detalle.orden,
+                'form': OrdenDetalleForm(initial={'orden_id': detalle.orden.id})
+            })
+        else:
+            return render(request, 'ordenes/orden_detalle_edit_form.html', {'form': form, 'detalle': detalle})
+
+
+class OrdenDetalleDeleteView(LoginRequiredMixin, DeleteView):
+    model = OrdenDetalle
+    template_name = 'ordenes_detalles/orden_detalle_confirm_delete.html'
+
+    def get_success_url(self):
+        return f'/ordenes/ordenes/{self.object.orden.id}/detalles/'
+    
+class OrdenPagarView(LoginRequiredMixin, View):
+    def get(self, request, orden_id):
+        orden = Orden.objects.get(id=orden_id)
+        detalles = OrdenDetalle.objects.filter(orden=orden)
+        total = sum(detalle.cantidad * detalle.precio_unitario for detalle in detalles)
+        return render(request, 'ordenes/ordenes_pagar.html', {'orden': orden, 'detalles': detalles, 'total': total})
