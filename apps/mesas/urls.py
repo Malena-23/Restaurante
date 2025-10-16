@@ -21,5 +21,12 @@ urlpatterns = [
     path('ordenes/<int:pk>/detalles/edit/', views.OrdenDetalleUpdateView.as_view(), name='ordenes_detalle_update'),
     path('ordenes/detalles/eliminar/<int:pk>/', views.OrdenDetalleDeleteView.as_view(), name='ordenes_detalle_delete'),
     
-     path('ordenes/<int:orden_id>/pagar', views.OrdenPagarView.as_view(), name='ordenes_pagar'),
+    path('ordenes/<int:orden_id>/pagar', views.OrdenPagarView.as_view(), name='ordenes_pagar'),
+    
+    path('metodos_pago/', views.MetodoPagoListView.as_view(), name='metodos_pago_list'),
+    path('metodos_pago/add/', views.MetodoPagoCreateView.as_view(), name='metodos_pago_create'),
+    path('metodos_pago/<int:pk>/edit/', views.MetodoPagoUpdateView.as_view(), name='metodos_pago_edit'),
+    path('metodos_pago/<int:pk>/delete/', views.MetodoPagoDeleteView.as_view(), name='metodos_pago_delete'),
+    
+    path('pagos/', views.PagoListView.as_view(), name='pagos_list'),
 ]

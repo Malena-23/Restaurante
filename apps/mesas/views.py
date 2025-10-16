@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import MesasEstado, Mesa, Orden, OrdenDetalle
-from .forms import MesasEstadoForm, MesaForm, OrdenForm, OrdenDetalleForm
+from .models import MesasEstado, Mesa, Orden, OrdenDetalle, MetodoPago, Pago
+from .forms import MesasEstadoForm, MesaForm, OrdenForm, OrdenDetalleForm, MetodoPagoForm
 from django.views import View
 
 class MesasEstadoListView(LoginRequiredMixin, ListView):
@@ -138,3 +138,30 @@ class OrdenPagarView(LoginRequiredMixin, View):
         detalles = OrdenDetalle.objects.filter(orden=orden)
         total = sum(detalle.cantidad * detalle.precio_unitario for detalle in detalles)
         return render(request, 'ordenes/ordenes_pagar.html', {'orden': orden, 'detalles': detalles, 'total': total})
+    
+class MetodoPagoListView(LoginRequiredMixin, ListView):
+    model = MetodoPago
+    template_name = 'metodos_pagos/metodos_pago_list.html'
+    context_object_name = 'metodos_pago'
+
+class MetodoPagoCreateView(LoginRequiredMixin, CreateView):
+    model = MetodoPago
+    form_class = MetodoPagoForm
+    template_name = 'metodos_pagos/metodos_pago_form.html'
+    success_url = '/ordenes/metodos_pago/'
+
+class MetodoPagoUpdateView(LoginRequiredMixin, UpdateView):
+    model = MetodoPago
+    form_class = MetodoPagoForm
+    template_name = 'metodos_pagos/metodos_pago_edit_form.html'
+    success_url = '/ordenes/metodos_pago/'
+
+class MetodoPagoDeleteView(LoginRequiredMixin, DeleteView):
+    model = MetodoPago
+    template_name = 'metodos_pagos/metodos_pago_confirm_delete.html'
+    success_url = '/ordenes/metodos_pago/'    
+
+class PagoListView(LoginRequiredMixin, ListView):
+    model = Pago
+    template_name = 'pagos/pagos_list.html'
+    context_object_name = 'pagos'
