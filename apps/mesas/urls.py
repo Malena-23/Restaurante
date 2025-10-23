@@ -15,9 +15,9 @@ urlpatterns = [
     path('mesas/<int:pk>/delete/', views.MesaDeleteView.as_view(), name='mesas_delete'),
     
     path('ordenes/', views.OrdenListView.as_view(), name='ordenes_list'),
-    path ('ordenes/add/', views.OrdenCreateView.as_view(), name='ordenes_create'),
+    path('ordenes/add/', views.OrdenCreateView.as_view(), name='ordenes_create'),
     
-    path('ordenes/<int:orden_id>/detalles/', views.OrdenDetalleView.as_view(), name='orden_detalle_list'),
+    path('ordenes/<int:orden_id>/detalles/', views.OrdenDetalleView.as_view(), name='ordenes_detalle_list'),
     path('ordenes/<int:pk>/detalles/edit/', views.OrdenDetalleUpdateView.as_view(), name='ordenes_detalle_update'),
     path('ordenes/detalles/eliminar/<int:pk>/', views.OrdenDetalleDeleteView.as_view(), name='ordenes_detalle_delete'),
     

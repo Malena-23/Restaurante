@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Orden No. {{ orden.id }} - {{ orden.fecha_hora }}</h1>
 
-<form action="{% url 'mesas:orden_detalle_list' orden.id %}" method="post">
+<form action="{% url 'mesas:ordenes_detalle_list' orden.id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Guardar</button>
