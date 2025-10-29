@@ -28,12 +28,12 @@ class OrdenForm(forms.ModelForm):
             'mesa': forms.Select(attrs={'class': 'form-control'}),
             'empleado': forms.HiddenInput(attrs={'class': 'form-control'})
         }
-
+        
     def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             if 'mesa' in self.fields:
                 self.fields['mesa'].queryset = Mesa.objects.filter(estado__nombre__iexact='Disponible')
-            
+    
     def save(self, commit=True):
         orden = super().save(commit=False)
         if commit:
