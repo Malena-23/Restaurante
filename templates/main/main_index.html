@@ -139,40 +139,22 @@
 
     <!-- Platos Populares -->
     <div class="card">
-      <div class="card-header"><h5>Platos Más Populares</h5></div>
+      <div class="card-header"><h5>Platillos Más Populares</h5></div>
       <div class="card-body">
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>Plato</th>
-              <th>Ventas</th>
-              <th>Ingresos</th>
-              <th>Rating</th>
-              <th>Tendencia</th>
+              <th>Platillo</th>
+              <th>Cantidad</th>
             </tr>
           </thead>
           <tbody>
+            {% for platillo in platillos_mas_vendidas %}
             <tr>
-              <td>Rollitos Primavera</td>
-              <td>86</td>
-              <td>$1,204.00</td>
-              <td>4.8</td>
-              <td><i class="bi bi-arrow-up text-success"></i></td>
+              <td>{{ platillo.detalles__platillo__nombre }}</td>
+              <td>{{ platillo.total_vendido }}</td>
             </tr>
-            <tr>
-              <td>Arroz Frito</td>
-              <td>64</td>
-              <td>$831.36</td>
-              <td>4.7</td>
-              <td><i class="bi bi-arrow-up text-success"></i></td>
-            </tr>
-            <tr>
-              <td>Pollo Kung Pao</td>
-              <td>52</td>
-              <td>$883.48</td>
-              <td>4.9</td>
-              <td><i class="bi bi-dash text-secondary"></i></td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
