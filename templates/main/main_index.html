@@ -130,8 +130,8 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-header"><h5>Ventas de la Semana</h5></div>
-          <div class="card-body text-center" style="height: 300px;">
-            <p class="text-muted">Aquí iría el gráfico de ventas semanales</p>
+           <div class="d-flex align-items-center justify-content-center" style="height: 300px;">                            
+                            <canvas id="myChart"></canvas>
           </div>
         </div>
       </div>
@@ -149,16 +149,50 @@
             </tr>
           </thead>
           <tbody>
-            {% for platillo in platillos_mas_vendidas %}
-            <tr>
-              <td>{{ platillo.detalles__platillo__nombre }}</td>
-              <td>{{ platillo.total_vendido }}</td>
-            </tr>
+            {% for platillo in platillos_mas_vendidos %}
+                {% if platillo.total_vendido > 0 %}
+                  <tr>
+                  <td>{{ platillo.detalles__platillo__nombre }}</td>
+                  <td>{{ platillo.total_vendido }}</td>                                            
+                  </tr>
+                {% endif %}
             {% endfor %}
           </tbody>
         </table>
       </div>
     </div>
   </div>
+
+<script src=" https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js "></script>
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [
+        {% for venta in ventas_por_dia %}
+            '{{venta.dia|safe}}'{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+      datasets: [{
+        label: 'Ventas',
+        data: [
+          {% for venta in ventas_por_dia %}
+              {{venta.total|safe}}{% if not forloop.last %},{% endif %}
+          {% endfor %}
+            ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
 
 {% endblock %}

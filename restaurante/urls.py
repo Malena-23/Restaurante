@@ -10,4 +10,5 @@ urlpatterns = [
     path('dashboard/', views.index_user, name='index_user'),
     path('mesas/', include('apps.mesas.urls')),
     path('ordenes/', include('apps.mesas.urls')),
+    path('api/', include('apps.api.urls')),
 ]
