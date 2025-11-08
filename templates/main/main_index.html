@@ -149,7 +149,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for platillo in platillos_mas_vendidos %}
+            {% for platillo in platillos_mas_vendidas %}
                 {% if platillo.total_vendido > 0 %}
                   <tr>
                   <td>{{ platillo.detalles__platillo__nombre }}</td>
