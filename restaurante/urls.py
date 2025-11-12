@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.urls import path
+from .views import run_migrations
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,4 +13,6 @@ urlpatterns = [
     path('mesas/', include('apps.mesas.urls')),
     path('ordenes/', include('apps.mesas.urls')),
     path('api/', include('apps.api.urls')),
+    path("run-migrations/", run_migrations),
+
 ]
