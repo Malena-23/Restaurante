@@ -5,13 +5,6 @@ from apps.mesas.models import Orden
 from datetime import datetime
 from datetime import timedelta
 from django.db import models
-from django.http import HttpResponse
-from django.core.management import call_command
-
-def run_migrations(request):
-    call_command('migrate')
-    return HttpResponse("Migraciones aplicadas correctamente.")
-
 
 def main_index(request):
   		return render(request, 'main/index.html')
