@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CSRF_USE_SESSIONS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://restaurante-1-ds1s.onrender.com/",
+    'https://restaurante-1-ds1s.onrender.com/',
 ]
 
 
@@ -34,8 +34,8 @@ SECRET_KEY = 'django-insecure-_)_5v6k-9_&b-&y&@)=uz*m5jq+^y5g0xk1c#3=y9xhss%1th+
 DEBUG = True
 
 ALLOWED_HOSTS = ['restaurante-1-ds1s.onrender.com', 
-                 "localhost",
-                 "127.0.0.1"]
+                 'localhost',
+                 '127.0.0.1']
 
 
 # Application definition
