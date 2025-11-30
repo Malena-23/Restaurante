@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 CSRF_USE_SESSIONS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://restaurante-1-ds1s.onrender.com/',
+    'https://restaurante-1-ds1s.onrender.com',
 ]
 
 
@@ -31,7 +31,7 @@ CSRF_TRUSTED_ORIGINS = [
 SECRET_KEY = 'django-insecure-_)_5v6k-9_&b-&y&@)=uz*m5jq+^y5g0xk1c#3=y9xhss%1th+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['restaurante-1-ds1s.onrender.com', 
                  'localhost',
@@ -97,7 +97,6 @@ DATABASES = {
     'default': dj_database_url.config(
            default=os.environ.get("DATABASE_URL"),
            conn_max_age=600,
-           ssl_require=True
        )
 }
 
@@ -135,15 +134,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles") 
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
+STATIC_URL = 'static/'
 
-if not DEBUG:
+if DEBUG:  
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
