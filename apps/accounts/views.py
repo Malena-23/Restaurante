@@ -4,32 +4,36 @@ from .forms import LoginForm, RegistrationForm
 from .models import AppUser
 from django.views.generic import ListView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 def login_view(request):
-    form = LoginForm()
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            # Aquí iría la lógica de autenticación del usuario
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            # Autenticación y redirección según sea necesario
-            usuario = authenticate(request, username=username, password=password)
-            if usuario is not None:
-                login(request, usuario)
-                
-                # Redirigir a la página principal o a la que corresponda
-                return redirect('index_user')
-            else:
-                form.add_error(None, 'Credenciales inválidas')
-    context = {
-        'form': form,
-    }
-    return render(request, 'accounts/login.html', context)
+    form = LoginForm(request.POST or None)
 
-def logout_view(request):
-    logout(request)
-    return redirect('main_index')
+    if request.method == 'POST':
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            # DEBUG: imprime en logs para ver qué llega
+            print("DEBUG login attempt:", "username=", username, "password_present=", bool(password))
+
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                # DEBUG
+                print("DEBUG login success for:", username)
+                return redirect('index_user')  # ajusta a tu url name real
+            else:
+                # añade error visible en el formulario y mensaje
+                form.add_error(None, 'Usuario o contraseña incorrectos')
+                messages.error(request, 'Usuario o contraseña incorrectos')
+        else:
+            # imprime errores del formulario en logs
+            print("DEBUG form errors:", form.errors)
+
+    return render(request, 'accounts/login.html', {'form': form})
+
 
 class UserListView(LoginRequiredMixin, ListView):
     login_url = 'accounts:login'
