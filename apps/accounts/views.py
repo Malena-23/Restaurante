@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, RegistrationForm
 from .models import AppUser
 from django.views.generic import ListView, View
@@ -34,6 +34,9 @@ def login_view(request):
 
     return render(request, 'accounts/login.html', {'form': form})
 
+def logout_view(request):
+    logout(request)
+    return redirect('/accounts/login/')
 
 class UserListView(LoginRequiredMixin, ListView):
     login_url = 'accounts:login'
