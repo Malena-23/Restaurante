@@ -17,6 +17,12 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+CSRF_USE_SESSIONS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://restaurante-1-ds1s.onrender.com",
+]
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -27,7 +33,9 @@ SECRET_KEY = 'django-insecure-_)_5v6k-9_&b-&y&@)=uz*m5jq+^y5g0xk1c#3=y9xhss%1th+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://restaurante-1-ds1s.onrender.com', '*']
+ALLOWED_HOSTS = ['restaurante-1-ds1s.onrender.com', 
+                 "localhost",
+                 "127.0.0.1"]
 
 
 # Application definition
