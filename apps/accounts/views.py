@@ -13,7 +13,6 @@ def login_view(request):
             # Aquí iría la lógica de autenticación del usuario
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            remember_me = form.cleaned_data['remember_me']
             # Autenticación y redirección según sea necesario
             usuario = authenticate(request, username=username, password=password)
             if usuario is not None:
@@ -50,8 +49,10 @@ class RegisterUserView(View):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password1']
             
-            user = AppUser.objects.create_user(username=username, email=email, password=password)
+            user = AppUser(username=username, email=email)
+            user.set_password(password)
             user.save()
+
             
             return redirect('accounts:login')
         return render(request, 'accounts/register.html', {'form': form})
