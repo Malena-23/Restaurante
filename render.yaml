@@ -9,8 +9,8 @@ services:
     plan: free
     name: restaurante-web
     runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python manage.py migrate && gunicorn proyecto.wsgi"
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn restaurante.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
