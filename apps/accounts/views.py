@@ -49,8 +49,7 @@ class RegisterUserView(View):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password1']
             
-            user = AppUser(username=username, email=email)
-            user.set_password(password)
+            user = AppUser.objects.create_user(username=username, email=email, password=password)
             user.save()
 
             
