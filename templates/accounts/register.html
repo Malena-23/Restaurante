@@ -107,7 +107,7 @@
         </div>
         
         <div class="login-body">
-            <form action="{% url 'accounts:login' %}" method="post">
+            <form action="{% url 'accounts:register' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                 
